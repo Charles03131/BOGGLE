@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  {% block content %}
+  <div class="text-container">
+    <p>Times Played: {{ nplays }}</p>
+    <p>High Score: {{ highscore }}</p>
+  </div>
+
+
+  <div class="container">
+    <table class="board">
+    <tbody>
+    {% for row in board %}
+    <tr>
+        {%for letter in row%} 
+        <td>{{letter}}</td>
+        {%endfor%}
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    
+   </div>
+    
+    <form method="POST">
+    <input type="text" class="word" autofocus>
+    <button id="submit_btn">SUBMIT</button>
+    </form>
+
+    <div class="text-container">
+        <p id="time-par">TIME REMAINING=<span id="timer"></span>sec</p>
+        <p id="score">Score:0</p>
+        <p id="response"></p>
+      </div>
+    
+
+    <script src="http://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/axios@0.19.0/dist/axios.js"></script>
+    <script src="/static/boggle.js"></script>
+    {% endblock %}
+</body>
+</html>
